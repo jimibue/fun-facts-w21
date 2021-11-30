@@ -14,6 +14,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Facts />} />
+        <Route path="/facts/new" element={<FactForm />} />
         <Route path="/facts/:id" element={<FactShow />} />
         <Route path="/facts/:id/edit" element={<FactForm />} />
         <Route path="/counter" element={<Counter />} />

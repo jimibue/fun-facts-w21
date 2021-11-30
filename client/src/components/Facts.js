@@ -27,6 +27,13 @@ const Facts = () => {
   const addFact = (fact) => {
     setFacts([fact, ...facts]);
   };
+  const deleteFact = async (id) => {
+    // remove from db
+    await axios.delete(`/api/facts/${id}`);
+    // remove from UI
+    const filterFacts = facts.filter((fact) => fact.id !== id);
+    setFacts(filterFacts);
+  };
 
   // render our facts
   const renderFacts = () => {
@@ -34,7 +41,7 @@ const Facts = () => {
       return <p>No Facts</p>;
     }
     return facts.map((fact) => {
-      return <Fact key={fact.id} {...fact} />;
+      return <Fact key={fact.id} deleteFact={deleteFact} {...fact} />;
     });
   };
 
@@ -43,6 +50,7 @@ const Facts = () => {
     <BorderedDiv color="yellow">
       <Link to="/counter">goto counter</Link>
       <h1>Facts</h1>
+      <Link to="facts/new">new fact</Link>
       <FactForm addFact={addFact} />
       {renderFacts()}
     </BorderedDiv>

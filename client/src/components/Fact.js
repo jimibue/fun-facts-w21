@@ -3,15 +3,17 @@ import { Link } from "react-router-dom";
 import BorderedDiv from "./BorderedDiv";
 
 const Fact = (props) => {
+  const { text, stars, id, username, source, deleteFact } = props;
   return (
     <BorderedDiv color="red">
-      <p>text: {props.text}</p>
-      <p>stars: {props.stars}</p>
-      <p>id: {props.id}</p>
-      <p>username: {props.username}</p>
-      <p>source: {props.source}</p>
-      <Link to={`/facts/${props.id}`}>view</Link>
-      <Link to={`/facts/${props.id}/edit`}>edit</Link>
+      <p>text: {text}</p>
+      <p>stars: {stars}</p>
+      <p>id: {id}</p>
+      <p>username: {username}</p>
+      <p>source: {source}</p>
+      <Link to={`/facts/${id}`}>view</Link>
+      <Link to={`/facts/${id}/edit`}>edit</Link>
+      <button onClick={() => deleteFact(id)}>delete</button>
     </BorderedDiv>
   );
 };

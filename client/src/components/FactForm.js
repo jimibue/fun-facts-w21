@@ -61,6 +61,7 @@ const FactForm = (props) => {
   return (
     <BorderedDiv color="purple">
       {/* {error && <p style={{ color: "red" }}>{JSON.stringify(error)}</p>} */}
+      <h1>{params.id ? "Edit" : "New"} Fact </h1>
       <form onSubmit={handleSubmit}>
         <p>text</p>
         {/* html validation, easiest, worst option */}
